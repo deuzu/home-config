@@ -40,35 +40,34 @@ if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
 fi
 
 PS1_PWD="$RED\w$NC"
-PS1_EXTRAS=""
 
-# Get Git current branch
-if [ -x "$(command -v git)" ] && [ -d .git ]; then
-  parse_git_branch () {
-    echo git::$(git rev-parse --abbrev-ref HEAD 2> /dev/null)
-  }
-  PS1_EXTRAS="$PS1_EXTRAS$CYAN\$(parse_git_branch)"
-fi;
+set_extra_ps1 () {
+  PS1_EXTRAS=""
 
+  if [ -d .git ]; then
+    PS1_EXTRAS="\n"
+  fi;
 
-# Get Kubernetes current config if on a git project
-if [ -x "$(command -v kubectl)" ] && [ -d .git ]; then
-  parse_k8s_current_config () {
-    echo k8s::$(kubectl config current-context)
-  }
-  PS1_EXTRAS="$PS1_EXTRAS $WHITE| $PURPLE\$(parse_k8s_current_config)"
-fi;
+  # Get Git current branch
+  if [ -x "$(command -v git)" ] && [ -d .git ]; then
+    PS1_EXTRAS="$PS1_EXTRAS${CYAN}git::\$(git rev-parse --abbrev-ref HEAD 2> /dev/null)"
+  fi;
 
-# Get AWS current config if on a git project
-if [ -x "$(command -v _awsp)" ] && [ -d .git ]; then
-  parse_aws_current_config () {
-    echo aws::${AWS_PROFILE:=default}
-  }
-  PS1_EXTRAS="$PS1_EXTRAS $WHITE| $GREEN\$(parse_aws_current_config)"
-fi;
+  # Get Kubernetes current config if on a git project
+  if [ -x "$(command -v kubectl)" ] && [ -d .git ]; then
+    PS1_EXTRAS="$PS1_EXTRAS $WHITE| ${PURPLE}k8s::\$(kubectl config current-context)"
+  fi;
 
-PS1_EXTRAS="$PS1_EXTRAS$NC"
-PS1="$PS1_PWD\n$PS1_EXTRAS\n${debian_chroot:+($debian_chroot)}\$ "
+  # Get AWS current config if on a git project
+  if [ -x "$(command -v _awsp)" ] && [ -d .git ]; then
+    PS1_EXTRAS="$PS1_EXTRAS $WHITE| ${GREEN}aws::\${AWS_PROFILE:=default}"
+  fi;
+
+  PS1_EXTRAS="$PS1_EXTRAS$NC"
+  PS1="$PS1_PWD$PS1_EXTRAS\n${debian_chroot:+($debian_chroot)}\$ "
+}
+
+PROMPT_COMMAND="set_extra_ps1"
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
