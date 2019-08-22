@@ -1,0 +1,28 @@
+#!/bin/bash
+
+FOLDER=$1
+ENCRYPTION_RECIPIENT=$2
+REVERSE=false
+
+for i in "$@"
+do
+case $i in
+    -r|--reverse)
+        REVERSE=true
+    ;;
+    *)
+        # unknown option
+    ;;
+esac
+done
+
+if [ $REVERSE = true ]; then
+    ls -1 $FOLDER \
+    | grep -E '*\.gpg' \
+    | while read FILE; do gpg --decrypt -o ${FOLDER}${FILE: 0:-4} ${FOLDER}${FILE} && rm -f ${FOLDER}${FILE}; done
+else
+    ls -1 $FOLDER \
+    | grep -v -E '*\.gpg' \
+    | while read FILE; do gpg --encrypt --recipient $ENCRYPTION_RECIPIENT -o ${FOLDER}${FILE}.gpg ${FOLDER}${FILE} && rm -f ${FOLDER}${FILE}; done
+fi
+
