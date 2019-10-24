@@ -332,3 +332,4 @@ _complete_alias () {
 # Set alias completions.
 
 complete -F _complete_alias k
+complete -F _complete_alias g
