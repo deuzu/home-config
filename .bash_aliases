@@ -1,4 +1,5 @@
 alias l='ls -lah --color=auto'
+alias g='git'
 alias k='kubectl'
 alias cat='bat'
 alias ping='prettyping --nolegend'
