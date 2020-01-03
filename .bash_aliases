@@ -10,9 +10,6 @@ alias help='tldr'
 alias grep='grep --color'
 alias awsp="source _awsp"
 
-# The fuck
-# eval $(thefuck --alias)
-
 # kubectl
 source <(kubectl completion bash)
 source <(k completion bash)
@@ -21,24 +18,24 @@ source <(k completion bash)
 complete -C '/usr/bin/aws_completer' aws
 
 extract () {
-   if [ -f $1 ] ; then
-       case $1 in
-           *.tar.bz2)   tar xjf $1        ;;
-           *.tar.gz)    tar xzf $1     ;;
-           *.bz2)       bunzip2 $1       ;;
-           *.rar)       rar x $1     ;;
-           *.gz)        gunzip $1     ;;
-           *.tar)       tar xf $1        ;;
-           *.tbz2)      tar xjf $1      ;;
-           *.tgz)       tar xzf $1       ;;
-           *.zip)       unzip $1     ;;
-           *.Z)         uncompress $1  ;;
-           *.7z)        7z x $1    ;;
-           *)           echo "'$1' cannot be extracted via extract()" ;;
-       esac
-   else
-       echo "'$1' is not a valid file"
-   fi
+  if [ -f $1 ] ; then
+    case $1 in
+      *.tar.bz2)   tar xjf $1        ;;
+      *.tar.gz)    tar xzf $1     ;;
+      *.bz2)       bunzip2 $1       ;;
+      *.rar)       rar x $1     ;;
+      *.gz)        gunzip $1     ;;
+      *.tar)       tar xf $1        ;;
+      *.tbz2)      tar xjf $1      ;;
+      *.tgz)       tar xzf $1       ;;
+      *.zip)       unzip $1     ;;
+      *.Z)         uncompress $1  ;;
+      *.7z)        7z x $1    ;;
+      *)           echo "'$1' cannot be extracted via extract()" ;;
+    esac
+  else
+    echo "'$1' is not a valid file"
+  fi
 }
 
 # netinfo - shows network information for your system
@@ -87,4 +84,13 @@ up() {
     do x="$x../";
   done;
   cd $x;
+}
+
+toggle_ps1_extra() {
+  local VARIABLE=${1}_PS1
+  local CURRENT_VAL=${!VARIABLE}
+  local NEXT_VAL=$((1-${!VARIABLE}))
+
+  sed -i ~/.bash_exports -e "s/export ${VARIABLE}=\(0\|1\)/export ${VARIABLE}=${NEXT_VAL}/g"
+  export $VARIABLE=$NEXT_VAL
 }

@@ -42,25 +42,21 @@ fi
 PS1_PWD="$RED\w$NC"
 
 set_extra_ps1 () {
-  PS1_EXTRAS=""
-
-  if [ -d .git ]; then
-    PS1_EXTRAS="\n"
-  fi;
+  PS1_EXTRAS="\n"
 
   # Get Git current branch
-  if [ -x "$(command -v git)" ] && [ -d .git ]; then
-    PS1_EXTRAS="$PS1_EXTRAS${CYAN}git::\$(git rev-parse --abbrev-ref HEAD 2> /dev/null)"
+  if [ -x "$(command -v git)" ] && [ "$GIT_PS1" = 1 ]; then
+    PS1_EXTRAS="$PS1_EXTRAS${CYAN}git::\$(git rev-parse --abbrev-ref HEAD 2> /dev/null) "
   fi;
 
-  # Get Kubernetes current config if on a git project
-  if [ -x "$(command -v kubectl)" ] && [ -d .git ]; then
-    PS1_EXTRAS="$PS1_EXTRAS $WHITE| ${PURPLE}k8s::\$(kubectl config current-context)"
+  # Get Kubernetes current config
+  if [ -x "$(command -v kubectl)" ] && [ "$K8S_PS1" = 1 ]; then
+    PS1_EXTRAS="$PS1_EXTRAS ${PURPLE}k8s::\$(kubectl config current-context) "
   fi;
 
-  # Get AWS current config if on a git project
-  if [ -x "$(command -v _awsp)" ] && [ -d .git ]; then
-    PS1_EXTRAS="$PS1_EXTRAS $WHITE| ${GREEN}aws::\${AWS_PROFILE:=default}"
+  # Get AWS current config
+  if [ -x "$(command -v _awsp)" ] && [ "$AWS_PS1" = 1 ]; then
+    PS1_EXTRAS="$PS1_EXTRAS ${GREEN}aws::\${AWS_PROFILE:=default}"
   fi;
 
   PS1_EXTRAS="$PS1_EXTRAS$NC"

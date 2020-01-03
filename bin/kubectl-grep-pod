@@ -1,0 +1,3 @@
+#!/bin/bash
+
+kubectl get po | grep -m 1 ^$1 | cut -d ' ' -f 1
