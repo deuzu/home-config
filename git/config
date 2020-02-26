@@ -12,12 +12,17 @@
     rb = rebase
     rbc = rebase --continue
     rba = rebase --abort
+    pu = pull
     pur = pull --rebase
     pop  = stash pop
     lg = log --pretty=oneline --abbrev-commit --graph --decorate
     lc = !git oneline ORIG_HEAD.. --stat --no-merges
     undo = !git reset --soft HEAD^
+    p = push
     pf = push --force-with-lease
+    ignore = update-index --assume-unchanged
+    unignore = update-index --no-assume-unchanged
+    ignored = !git ls-files -v | grep "^[[:lower:]]"
 [color]
 	ui = true
 [push]
