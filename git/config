@@ -24,7 +24,7 @@
     unignore = update-index --no-assume-unchanged
     ignored = !git ls-files -v | grep "^[[:lower:]]"
 [color]
-	ui = true
+    ui = true
 [push]
     default = current
 [core]
