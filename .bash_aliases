@@ -1,4 +1,6 @@
 alias l='ls -lah --color=auto'
+alias d='docker'
+alias dc='docker-compose'
 alias g='git'
 alias k='kubectl'
 alias cat='bat'
