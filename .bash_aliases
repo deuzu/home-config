@@ -3,6 +3,7 @@ alias d='docker'
 alias dc='docker-compose'
 alias g='git'
 alias k='kubectl'
+alias tf='terraform'
 alias cat='bat'
 alias ping='prettyping --nolegend'
 alias preview="fzf --preview 'bat --color \"always\" {}'"
