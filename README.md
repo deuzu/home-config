@@ -2,22 +2,6 @@
 
 Config files for linux home
 
-## Prerequisites
-
-- `apt install git httpie jq htop ncdu vim`
-- [bat](https://github.com/sharkdp/bat#installation)
-- [prettyping](https://github.com/denilsonsa/prettyping#installation)
-- [fzf](https://github.com/junegunn/fzf#installation)
-- [diff-so-fancy](https://github.com/so-fancy/diff-so-fancy#install)
-- [nvm](https://github.com/nvm-sh/nvm#installation-and-update)
-- [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
-- [aws cli](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html)
-- [gcloud cli](https://cloud.google.com/sdk/docs/#install_the_latest_cloud_tools_version_cloudsdk_current_version)
-- `npm install -g awsp`
-- `npm install -g tldr`
-- [sampler](https://github.com/sqshq/sampler)
-- [bandwhich](https://github.com/imsnif/bandwhich)
-
 ## Setup
 
 ```bash
@@ -25,8 +9,26 @@ Config files for linux home
 curl https://raw.githubusercontent.com/deuzu/home-config/master/git/config > ~/.gitconfig
 
 # Bash config files
-curl https://raw.githubusercontent.com/deuzu/home-config/master/.bashrc > ~/.bashrc
-curl https://raw.githubusercontent.com/deuzu/home-config/master/.bash_aliases > ~/.bash_aliases
-curl https://raw.githubusercontent.com/deuzu/home-config/master/.bash_completion > ~/.bash_completion
-curl https://raw.githubusercontent.com/deuzu/home-config/master/.bash_exports > ~/.bash_exports
-mkdir ~/.sampler ; curl https://raw.githubusercontent.com/deuzu/home-config/master/sampler/config.yaml > ~/.sampler/config.yaml
+curl https://raw.githubusercontent.com/deuzu/home-config/master/install.sh | bash
+
+# Binaries
+curl https://raw.githubusercontent.com/deuzu/home-config/master/bin/crypt-folder > ~/bin/crypt-folder
+
+# Inside Nu (after shell restart)
+echo $nu.path | prepend "/usr/local/bin/nu" | config set_into path
+echo $nu.path | prepend "/home/ftouya/.cargo/bin" | config set_into path
+echo $nu.path | prepend "/home/ftouya/.npm/bin" | config set_into path
+echo $nu.path | prepend "/home/ftouya/bin" | config set_into path
+echo $nu.env | insert LD_LIBRARY_PATH "/usr/local/lib" | config set_into env
+
+config load /tmp/install-home-config/config.toml
+rm /tmp/install-home-config -rf
+```
+
+## To do
+
+- [] Fix freeze when using autocompletion on commands [https://github.com/nushell/nushelphell/issues/2639](https://github.com/nushell/nushell/issues/2639)?
+- [] Fix aliases for commands with multiple args [https://github.com/nushell/nushell/issues/378#issuecomment-686304366](https://github.com/nushell/nushell/issues/378#issuecomment-686304366)?
+- [] [teeldeer](https://github.com/dbrgn/tealdeer)
+- [] [fzf](https://github.com/junegunn/fzf#installation) with Nu
+- [] [sampler](https://github.com/sqshq/sampler)

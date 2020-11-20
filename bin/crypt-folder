@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# Crypt all non ".gpg" files in a given folder
+# With `--reverse` option : decrypt all ".gpg" files in a given folder
+# Usage
+# crypt-folder /path/to/my/folder associated_to_gpg@email
+# crypt-folder /path/to/my/folder associated_to_gpg@email --reverse
+
 FOLDER=$1
 ENCRYPTION_RECIPIENT=$2
 REVERSE=false
@@ -25,4 +31,3 @@ else
     | grep -v -E '*\.gpg' \
     | while read FILE; do gpg --encrypt --recipient $ENCRYPTION_RECIPIENT -o ${FOLDER}${FILE}.gpg ${FOLDER}${FILE} && rm -f ${FOLDER}${FILE}; done
 fi
-

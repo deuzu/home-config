@@ -1,8 +1,8 @@
 [user]
-    name = todo
-    email = todo@email
+    name = redacted
+    email = redacted@email
 [alias]
-    st = status
+    st = status -sb
     ci = commit
     cm = commit -m
     amend = commit --amend
@@ -14,7 +14,7 @@
     rba = rebase --abort
     pu = pull
     pur = pull --rebase
-    pop  = stash pop
+    pop = stash pop
     lg = log --pretty=oneline --abbrev-commit --graph --decorate
     lc = !git oneline ORIG_HEAD.. --stat --no-merges
     undo = !git reset --soft HEAD^

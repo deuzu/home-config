@@ -1,0 +1,9 @@
+skip_welcome_message = true
+prompt = "echo $(starship prompt)"
+startup = [
+    "alias d [arg1, arg2, arg3, arg4, arg5] { docker $arg1 $arg2 $arg3 $arg4 $arg5 }",
+    "alias dc [arg1, arg2, arg3, arg4, arg5] { docker-compose $arg1 $arg2 $arg3 $arg4 $arg5 }",
+    "alias g [arg1, arg2, arg3, arg4, arg5] { git $arg1 $arg2 $arg3 $arg4 $arg5 }",
+    "alias k [arg1, arg2, arg3, arg4, arg5] { kubectl $arg1 $arg2 $arg3 $arg4 $arg5 }",
+    "alias tf [arg1, arg2, arg3, arg4, arg5] { terraform $arg1 $arg2 $arg3 $arg4 $arg5 }",
+]
