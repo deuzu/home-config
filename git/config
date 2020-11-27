@@ -1,51 +1,55 @@
 [user]
-    name = redacted
-    email = redacted@email
+	name = redacted
+	email = redacted@email
+	signingkey = redacted
 [alias]
-    st = status -sb
-    ci = commit
-    cm = commit -m
-    amend = commit --amend
-    erf = commit --amend --no-edit
-    co = checkout
-    cp = cherry-pick
-    rb = rebase
-    rbc = rebase --continue
-    rba = rebase --abort
-    pu = pull
-    pur = pull --rebase
-    pop = stash pop
-    lg = log --pretty=oneline --abbrev-commit --graph --decorate
-    lc = !git oneline ORIG_HEAD.. --stat --no-merges
-    undo = !git reset --soft HEAD^
-    p = push
-    pf = push --force-with-lease
-    ignore = update-index --assume-unchanged
-    unignore = update-index --no-assume-unchanged
-    ignored = !git ls-files -v | grep "^[[:lower:]]"
+	st = status -sb
+	ci = commit
+	cm = commit -m
+	amend = commit --amend
+	erf = commit --amend --no-edit
+	co = checkout
+	cp = cherry-pick
+	rb = rebase
+	rbc = rebase --continue
+	rba = rebase --abort
+	pu = pull
+	pur = pull --rebase
+	pop = stash pop
+	ls = !nu -c \"glg 10\"
+	lp = log -p -M90%
+	lg = log --pretty=oneline --abbrev-commit --graph --decorate
+	undo = !git reset --soft HEAD^
+	p = push
+	pf = push --force-with-lease
+	ignore = update-index --assume-unchanged
+	unignore = update-index --no-assume-unchanged
+	ignored = !git ls-files -v | grep "^[[:lower:]]"
 [color]
-    ui = true
+	ui = true
 [push]
-    default = current
+	default = current
 [core]
-    autocrlf = input
-    fileMode = false
-    editor = vim
-    excludesfile = /home/ftouya/.gitignore
-    pager = diff-so-fancy | less --tabs=4 -RFX
+	autocrlf = input
+	fileMode = false
+	editor = vim
+	excludesfile = /home/ftouya/.gitignore
+	pager = diff-so-fancy | less --tabs=4 -RFX
 [remote "origin"]
-    prune = true
+	prune = true
 [color "diff-highlight"]
-    oldNormal = red bold
-    oldHighlight = red bold 52
-    newNormal = green bold
-    newHighlight = green bold 22
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
 [color "diff"]
-    meta = yellow
-    frag = magenta bold
-    commit = yellow bold
-    old = red bold
-    new = green bold
-    whitespace = red reverse
+	meta = yellow
+	frag = magenta bold
+	commit = yellow bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
 [commit]
-    gpgsign = true
+	gpgsign = true
+[gpg]
+	program = gpg

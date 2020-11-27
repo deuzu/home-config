@@ -19,7 +19,9 @@ echo $nu.path | prepend "/usr/local/bin/nu" | config set_into path
 echo $nu.path | prepend "/home/ftouya/.cargo/bin" | config set_into path
 echo $nu.path | prepend "/home/ftouya/.npm/bin" | config set_into path
 echo $nu.path | prepend "/home/ftouya/bin" | config set_into path
+echo $nu.path | prepend "/home/ftouya/.npm/bin" | config set_into path
 echo $nu.env | insert LD_LIBRARY_PATH "/usr/local/lib" | config set_into env
+echo $nu.env | insert GPG_TTY $(tty) | config set_into env
 
 config load /tmp/install-home-config/config.toml
 rm /tmp/install-home-config -rf

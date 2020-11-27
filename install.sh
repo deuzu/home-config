@@ -18,7 +18,6 @@ sudo apt install \
     httpie \ # https://github.com/httpie/httpie
     jq \ # https://github.com/stedolan/jq
     ripgrep # https://github.com/BurntSushi/ripgrep
-    # bat # https://github.com/sharkdp/bat
 
 # Rust
 # https://www.rust-lang.org/tools/install

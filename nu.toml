@@ -6,4 +6,5 @@ startup = [
     "alias g [arg1, arg2, arg3, arg4, arg5] { git $arg1 $arg2 $arg3 $arg4 $arg5 }",
     "alias k [arg1, arg2, arg3, arg4, arg5] { kubectl $arg1 $arg2 $arg3 $arg4 $arg5 }",
     "alias tf [arg1, arg2, arg3, arg4, arg5] { terraform $arg1 $arg2 $arg3 $arg4 $arg5 }",
+    "alias glg [n] { git log --pretty=%h»¦«%aN»¦«%s»¦«%ar | lines | split column \"»¦«\" hash committer subject time | first $n }",
 ]
