@@ -96,10 +96,10 @@ cp /tmp/install-home-config/starship.toml ~/.config/starship.toml
 
 # Nu Shell
 # https://github.com/nushell/nushell
-wget https://github.com/nushell/nushell/releases/download/0.22.0/nu_0_22_0_linux.tar.gz
-tar -xvf nu_0_22_0_linux.tar.gz
-rm nu_0_22_0_linux.tar.gz
+wget https://github.com/nushell/nushell/releases/download/0.27.1/nu_0_27_1_linux.tar.gz
+tar -xvf nu_0_27_1_linux.tar.gz
+rm nu_0_27_1_linux.tar.gz
 sudo mkdir /usr/local/bin/nu
-sudo mv nu_0_22_0_linux/nushell-0.22.0/nu/* /usr/local/bin/nu/
-rm nu_0_22_0_linux -rf
+sudo mv nu_0_27_1_linux/nushell-0.27.1/nu/* /usr/local/bin/nu/
+rm nu_0_27_1_linux -rf
 sudo chsh --shel /usr/local/bin/nu/nu $(whoami)
