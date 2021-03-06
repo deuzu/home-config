@@ -28,8 +28,8 @@ rm /tmp/install-home-config -rf
 
 ## To do
 
-- [] Fix freeze when using autocompletion on commands [https://github.com/nushell/nushelphell/issues/2639](https://github.com/nushell/nushell/issues/2639)?
-- [] Fix aliases for commands with multiple args [https://github.com/nushell/nushell/issues/378#issuecomment-686304366](https://github.com/nushell/nushell/issues/378#issuecomment-686304366)?
+- [x] Fix freeze when using autocompletion on commands [https://github.com/nushell/nushelphell/issues/2639](https://github.com/nushell/nushell/issues/2639)?
+- [x] Fix aliases for commands with multiple args [https://github.com/nushell/nushell/issues/378#issuecomment-686304366](https://github.com/nushell/nushell/issues/378#issuecomment-686304366)?
 - [] [teeldeer](https://github.com/dbrgn/tealdeer)
 - [] [fzf](https://github.com/junegunn/fzf#installation) with Nu
 - [] [sampler](https://github.com/sqshq/sampler)

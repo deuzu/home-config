@@ -8,4 +8,5 @@ startup = [
     "alias tf = terraform",
     "def glg [n] { git log --pretty=%h»¦«%aN»¦«%s»¦«%ar | lines | split column \"»¦«\" hash committer subject time | first $n }",
     "def killit [p] { ps | where name =~ $p | get pid | each { kill --force $it } }",
+    "def rst-gpg [] { bash -c \"nu -c 'killit gpg' && gpg-agent --daemon\" }", # 😒
 ]
