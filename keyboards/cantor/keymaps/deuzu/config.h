@@ -1,0 +1,8 @@
+#define NO_USB_STARTUP_CHECK
+
+#define COMBO_COUNT 5
+
+#ifdef CAPS_WORD_ENABLE
+#   define BOTH_SHIFTS_TURNS_ON_CAPS_WORD
+#   define CAPS_WORD_IDLE_TIMEOUT 5000
+#endif

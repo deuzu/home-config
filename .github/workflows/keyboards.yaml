@@ -1,24 +1,25 @@
 name: keyboards
 
 on:
-  push:
-    branches:
-      # - main
-      - v2
-    paths:
-      - keyboards
+  push: ~
+    # branches:
+    #   # - main
+    #   - v2
+    # paths:
+    #   - keyboards
 jobs:
   build:
-    steps:
-      - name: QMK Cantor Keyboard firmware build
-        uses: justgook/qmk-build@v1
-        with:
-          keymap-path: "keyboards/cantor/keymaps/deuzu"
-          keyboard: "cantor"
-          keymap: "deuzu"
+    runs-on: ubuntu-latest
 
-      - name: Upload a Firmware
-        uses: actions/upload-artifact@v3.1.2
+    steps:
+      - uses: actions/checkout@v4
+      - uses: d3adb5/build-qmk-fw@v1
         with:
-          name: firmware
-          path: keyboards/cantor/build
+          keyboard: cantor
+          keymap: deuzu
+          local-keymap-path: keyboards/cantor/keymaps/deuzu
+          output-dir: keyboards/build
+      - uses: actions/upload-artifact@v4
+        with:
+          name: qmk-firmware-cantor-deuzu
+          path: keyboards/build
