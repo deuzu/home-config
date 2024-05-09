@@ -8,16 +8,17 @@ on:
     paths:
       - keyboards
 jobs:
-  steps:
-    - name: QMK Cantor Keyboard firmware build
-      use: justgook/qmk-build@v1
-      with:
+  build:
+    steps:
+      - name: QMK Cantor Keyboard firmware build
+        use: justgook/qmk-build@v1
+        with:
           keymap-path: "keyboards/cantor/keymaps/deuzu"
           keyboard: "cantor"
           keymap: "deuzu"
 
-    - name: Upload a Firmware
-      uses: actions/upload-artifact@v3.1.2
-      with:
-        name: firmware
-        path: keyboards/cantor/build
+      - name: Upload a Firmware
+        uses: actions/upload-artifact@v3.1.2
+        with:
+          name: firmware
+          path: keyboards/cantor/build
